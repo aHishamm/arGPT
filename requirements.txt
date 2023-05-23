@@ -1,12 +1,8 @@
 streamlit
 python-dotenv
-seaborn
-pandas
 openai
 git+https://github.com/openai/whisper.git
-streamlit-audiorecorder
-gradio 
+streamlit-audiorecorder 
 streamlit-chat
-hugchat
 streamlit-extras
 langchain 

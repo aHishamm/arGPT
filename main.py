@@ -15,7 +15,7 @@ from langchain.schema import (
     HumanMessage,
     AIMessage
 )
-whisper_model = whisper.load_model("base") 
+whisper_model = whisper.load_model("small") 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 st.set_page_config(page_title="arGPT - An Arabic ChatGPT Streamlit Conversational Bot")
 #Title
@@ -33,8 +33,8 @@ if len(audio_bytes > 0):
     st.audio(audio_bytes.tobytes())
     wav_file = open("audio.mp3", "wb")
     wav_file.write(audio_bytes.tobytes())
-    text_response = whisper_model.transcribe(wav_file.name,language='ar')['text'] 
-    print(text_response)
+    user_input = whisper_model.transcribe(wav_file.name,language='ar')['text'] 
+    print(user_input)
 if user_input: 
     st.session_state.messages.append(HumanMessage(content=user_input)) 
     with st.spinner("Processing..."): 
