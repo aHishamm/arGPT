@@ -5,4 +5,7 @@ git+https://github.com/openai/whisper.git
 streamlit-audiorecorder 
 streamlit-chat
 streamlit-extras
-langchain 
+langchain
+gtts
+ffmpeg
+mutagen
