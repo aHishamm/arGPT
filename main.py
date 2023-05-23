@@ -46,14 +46,13 @@ def audio_to_text(audio):
 chat = ChatOpenAI(temperature=0) 
 if "messages" not in st.session_state: 
     st.session_state.messages = [SystemMessage(content="You are a helpful AI assistant, translate your responses to Arabic")] 
-user_input = st.text_input("Your message: ",key='user_input')
 audio_bytes = audiorecorder("Click to record","Recording...") 
 if len(audio_bytes > 0): 
     st.audio(audio_bytes.tobytes())
     wav_file = open("audio.mp3", "wb")
     wav_file.write(audio_bytes.tobytes())
     user_input = whisper_model.transcribe(wav_file.name,language='ar')['text'] 
-if user_input: 
+if len(audio_bytes > 0):
     st.session_state.messages.append(HumanMessage(content=user_input)) 
     with st.spinner("Processing..."): 
         response = chat(st.session_state.messages)
